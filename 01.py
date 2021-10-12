@@ -4,10 +4,12 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 import re
 import ast
+import datetime
 import openpyxl
 from openpyxl import Workbook
 from openpyxl import load_workbook
 from openpyxl.worksheet.table import Table, TableStyleInfo
+
 # import sqlite3
 
 # import csv
@@ -129,22 +131,24 @@ def race_to_start():
         venue_date = WebDriverWait(driver, 30).until(ec.presence_of_element_located((By.CLASS_NAME, "event-date")))
         venue_date_final = venue_date.text
         venue_date_final01 = venue_date_final[3:]
-        print(venue_date_final01)
+        # print(venue_date_final01)
 
         venue_time = venue_name_final.split()[0]
-        print(venue_time)
+        venue_time_final = datetime.datetime.strptime(venue_time, '%H:%M').time()
+        # print(venue_time_final)
+
         # print(type(venue_time))
 
         venue_name_final01 = str(venue_name_final.split()[1:-1])
         venue_name_final02 = (' '.join(ast.literal_eval(venue_name_final01)))
-        print(venue_name_final02)
+        # print(venue_name_final02)
         # print(type(venue_name_final01))
 
         venue_country = str(venue_name_final.split()[-1]).strip("()")
-        print(venue_country)
+        # print(venue_country)
 
         venue_total_sum = event_money_int
-        print(venue_total_sum)
+        # print(venue_total_sum)
 
         jockey_names = WebDriverWait(driver, 30).until(ec.presence_of_all_elements_located((By.CLASS_NAME, "name")))
 
@@ -178,67 +182,58 @@ def race_to_start():
 
         # print(quotes_final_against)
         favorite_index = min(quotes_final_against)
-        print(favorite_index)
+        # print(favorite_index)
 
         favorite_jokey_name = jockey_names_list[quotes_final_against.index(favorite_index)]
-        print(favorite_jokey_name)
+        # print(favorite_jokey_name)
 
         # Calling the Test function to write the event in Excel
-        # test(venue_date_final01, venue_time, venue_name_final02, venue_country,
-        #      venue_total_sum, favorite_index, favorite_jokey_name)
+        test(venue_date_final01, venue_time_final, venue_name_final02, venue_country,
+             venue_total_sum, favorite_index, favorite_jokey_name)
 
     else:
         pass
 
 
-# The function that writes the values in the Excel
-# def test(venue_date_final01, venue_time, venue_name_final02, venue_country,
-#          venue_total_sum, favorite_index, favorite_jokey_name):
-    # print(venue_date_final01, venue_time, venue_name_final01, venue_country,
+# The function that verifies if the race is writen in Excel, if it isn't it writes it in
+# Also here Should be the Betting button
+def test(venue_date_final01, venue_time_final, venue_name_final02, venue_country,
+         venue_total_sum, favorite_index, favorite_jokey_name):
+    # print(venue_date_final01, venue_time_final, venue_name_final02, venue_country,
     #       venue_total_sum, favorite_index, favorite_jokey_name)
 
-# headers = ['Date', 'Hour', 'Race', 'Country', 'Money', 'Against_odds', 'Jokey', 'Win_Lost', 'Bank']
+    # Load the Excel file and make it active
+    workbook_name = 'data.xlsx'
+    wb = load_workbook(workbook_name)
+    ws = wb.active
 
-workbook_name = 'data.xlsx'
-wb = load_workbook(workbook_name)
-ws = wb.active
-# ws.title = "Races"
-# ws.append(headers)
+    # Because openpyxl doesn't have a module that let you select last n rows
+    # I have to get the length of the C column for which I subtract the rows
+    # that have to be checked, in this case I got the last 7 rows
+    col_c = ws['c']
+    len_table = int(len(col_c))
+    # print print(len_table - 5)
+    fifth_row = int(len_table - 7)
 
-col_c = ws['c']
-len_table = int(len(col_c))
-# print print(len_table - 5)
-fifth_row = int(len_table - 7)
+    # I bring the values form the race_to_start function in a list so we can write them in Excel
+    race_final_data = [venue_date_final01, venue_time_final, venue_name_final02, venue_country,
+                       venue_total_sum, favorite_index, favorite_jokey_name]
 
-# row_range = ws[fifth_row: len_table]
-# print(row_range)
+    # Select the columns and rows to be checked
+    row = ws.iter_rows(min_row=fifth_row, max_row=len_table, min_col=2, max_col=3)
 
-col_b = int(fifth_row)
-col_c = int(len_table)
-col_bf = str('B') + str(col_b)
-col_cf = str('C') + str(col_c)
-# print(col_bf)
-# print(col_cf)
+    # Create an empty list of the last rows from Excel to be able to compare the item
+    excel_last_rows = []
 
-row = ws.iter_rows(min_row=fifth_row, max_row=len_table, min_col=2, max_col=3)
+    for a, b in row:
+        excel_last_rows.append([a.value, b.value])
 
-for a, b in row:
-    print(a.value, b.value)
+    # The button that will place the bet will be in this condition as well
+    if [venue_time_final, venue_name_final02] not in excel_last_rows:
+        # print(venue_time_final, venue_name_final02)
+        ws.append(race_final_data)
 
-wb.save(filename=workbook_name)
-
-# print(ws.title)
-# for race_info in range(2, ws.max_row + 1):
-#     race_hour = ws.cell(row=race_info, column=2).value
-#     race_title = ws.cell(row=race_info, column=3).value
-#     # print(race_hour)
-#     race_hour_list.append(race_hour)
-#     race_title_list.append(race_title)
-
-# else:
-#     pass
-
-# break
+    wb.save(filename=workbook_name)
 
 
 # while True:
