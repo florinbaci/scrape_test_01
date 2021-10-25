@@ -1,54 +1,141 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as ec
+import ast
 import openpyxl
 import datetime
+
 
 # from openpyxl import Workbook
 # from openpyxl import load_workbook
 # from openpyxl.worksheet.table import Table, TableStyleInfo
 
+def race_finished():
+    jockey_names = WebDriverWait(driver, 30).until(ec.presence_of_all_elements_located((By.CLASS_NAME, "name")))
+    jockey_names_list = []
+    for jockey in jockey_names:
+        jokey_01 = jockey.text
+        jockey_names_list.append(jokey_01)
+        race_winner = WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.CLASS_NAME, "runner-winner")))
+        race_win01: str = '//*[@id="main-wrapper"]/div/div[2]/div/ui-view/div/div/div[1]/div[3]/div/div[' \
+                          '1]/div/bf-main-market/bf-main-marketview/div/div[2]/bf-marketview-runners-list[' \
+                          '2]/div/div/div/table/tbody/tr['
+        race_win02: str = ']/td/div[1]/div[2]/div'
+    # print(jockey_names_list)
+    position_final = []
+
+    for position in range(len(jockey_names)):
+        race_w = race_win01 + str(position + 1) + race_win02
+        try:
+            winner = WebDriverWait(driver, 5).until(ec.presence_of_element_located((By.XPATH, race_w)))
+            if winner.text == "Câştigător":
+                position_final.append(position)
+            break
+        except:
+            "TimeoutException"
+
+    venue_name = WebDriverWait(driver, 30).until(ec.presence_of_element_located((By.CLASS_NAME, "venue-name")))
+    venue_name_final = venue_name.text
+    venue_name_final_race_fin01 = str(venue_name_final.split()[1:-1])
+    venue_name_final_race_fin02 = (' '.join(ast.literal_eval(venue_name_final_race_fin01)))
+
+    winner_final = jockey_names_list[int(position_final[0])]
+    print(venue_name_final)
+    # print(winner_final)
+
+    venue_date_race_fin = WebDriverWait(driver, 30).until(ec.presence_of_element_located((By.CLASS_NAME, "event-date")))
+    venue_date_final_race_fin = venue_date_race_fin.text
+    venue_date_final_race_fin01 = venue_date_final_race_fin[3:]
+    # print(venue_date_final01)
+
+    venue_time_race_fin = venue_name_final.split()[0]
+    venue_time_final_race_fin = datetime.datetime.strptime(venue_time_race_fin, '%H:%M').time()
+    # print(venue_time_final_race_fin)
+
+    race_final_data = [venue_name_final_race_fin02, venue_time_final_race_fin]
+    print(race_final_data)
+    print(winner_final)
+    print("in")
+
+    # driver.quit()
+
+
 # ref_workbook = openpyxl.load_workbook('data.xlsx')
 path = 'C:/Users/User/PycharmProjects/scrape_test_01/venv/data.xlsx'
 wb = openpyxl.load_workbook(path)
 
-workbook_name = 'data_test.xlsx'
+workbook_name = 'data.xlsx'
 # wb = load_workbook(workbook_name)
 ws = wb.active
 # ws.title = "Races"
 
-
 col_c = ws['c']
 len_table = int(len(col_c))
-# print print(len_table - 5)
-fifth_row = int(len_table - 7)
+# print(len_table)
+fifth_row = int(len_table - 5)
+# print(fifth_row)
+
+row = ws.iter_rows(min_row=fifth_row, max_row=len_table, min_col=8, max_col=8)
+
+# Create an empty list to store the links that has to be checked
+links_to_check = []
+
+for link in row:
+    for link_text in link:
+        links_to_check.append(link_text.value)
+
+print(links_to_check)
+
+driver = webdriver.Chrome('C:/Users/User/AppData/Local/Programs/Python/Python38/Scripts/chromedriver.exe')
+driver.maximize_window()
+
+try:
+    for race_fin in links_to_check:
+        driver.get(race_fin)
+        race_status = WebDriverWait(driver, 30).until(ec.presence_of_element_located((By.CLASS_NAME, "market-status-label")))
+        if race_status.text == "Intră în desfăşurare":
+            pass
+        elif race_status.text == 'Închis':
+            race_finished()
+        elif race_status.text == "În desfăşurare":
+            pass
+
+
+except:
+    'TimeoutException'
+
+driver.quit()
 
 # row_range = ws[fifth_row: len_table]
 # print(row_range)
 
-col_b = int(fifth_row)
-col_c = int(len_table)
+# col_b = int(fifth_row)
+# col_c = int(len_table)
 # col_bf = str('B') + str(col_b)
 # col_cf = str('C') + str(col_c)
 # # print(col_bf)
 # # print(col_cf)
 
-time_race_list = []
-
-row_time_race = ws.iter_rows(min_row=fifth_row, max_row=len_table, min_col=2, max_col=3)
-
-for time, race in row_time_race:
-    time_race_list.append([time.value, race.value])
-
-jokey_list = []
-
-row_jokey = ws.iter_rows(min_row=fifth_row, max_row=len_table, min_col=7, max_col=7)
-
-for jokey in row_jokey:
-    for jokey_value in jokey:
-        jokey_list.append(jokey_value.value)
-
-for time_race_jokey in range(len(time_race_list)):
-    time_race_list[time_race_jokey].append(jokey_list[time_race_jokey])
-
-print(time_race_list)
+# time_race_list = []
+#
+# row_time_race = ws.iter_rows(min_row=fifth_row, max_row=len_table, min_col=2, max_col=3)
+#
+# for time, race in row_time_race:
+#     time_race_list.append([time.value, race.value])
+#
+# jokey_list = []
+#
+# row_jokey = ws.iter_rows(min_row=fifth_row, max_row=len_table, min_col=7, max_col=7)
+#
+# for jokey in row_jokey:
+#     for jokey_value in jokey:
+#         jokey_list.append(jokey_value.value)
+#
+# for time_race_jokey in range(len(time_race_list)):
+#     time_race_list[time_race_jokey].append(jokey_list[time_race_jokey])
+#
+# print(time_race_list)
 # print(jokey_list)
 
 # def index_in_list_of_lists(time_race_list, jokey_list):

@@ -55,8 +55,14 @@ except:
 # WHEN IT LOOPS THROUGH ALL THE LINKS, IT TAKES THOSE RACES WITH THE SAME NAMES THAT ARE A DAY APART
 # FOR NOW THIS ISN'T A PROBLEM BECAUSE THE RACES THAT ARE ON THE NEXT DAY DON'T MEET THE REQUIREMENT
 # OF HAVING THE TOTAL SUM OF MONEY OVER 5000 LEI, BUT JUST A SMALL BUG TO HAVE IN MIND
+
+# This bug has to be fixed with datetime library, because some days could lead to problems
 race_title = []
 race_link = []
+
+# Create an empty list to store the links that has to be checked
+links_to_check = []
+
 
 for event in events:
     races = driver.find_elements_by_partial_link_text(event)
@@ -94,14 +100,16 @@ def race_finished():
     row = ws.iter_rows(min_row=fifth_row, max_row=len_table, min_col=8, max_col=8)
 
     # Create an empty list to store the links that has to be checked
-    links_to_check = []
+    # links_to_check = []
 
     for link in row:
-        links_to_check.append(link.value)
+        for link_text in link:
+            links_to_check.append(link_text.value)
 
     print(links_to_check)
 
-    # wb.save(filename=workbook_name)
+    wb.save(filename=workbook_name)
+
 
     # jockey_names = WebDriverWait(driver, 30).until(ec.presence_of_all_elements_located((By.CLASS_NAME, "name")))
     # jockey_names_list = []
@@ -205,6 +213,21 @@ def race_finished():
     #
     # h = index_in_list_of_lists(time_race_list, winner_final)
     # print(h[0])
+
+# print(links_to_check)
+
+try:
+    for race_finished in links_to_check:
+        driver.get(links_to_check)
+        race_status_to_check = WebDriverWait(driver, 30).until(ec.presence_of_element_located((By.CLASS_NAME, "market-status-label")))
+        if race_status_to_check.text == "Intră în desfăşurare":
+            pass
+        elif race_status_to_check.text == 'Închis':
+            race_finished()
+        elif race_status_to_check.text == "În desfăşurare":
+            pass
+except:
+    'TimeoutException'
 
 
 # This function takes the races that meet the requirements
@@ -348,8 +371,8 @@ try:
         race_status = WebDriverWait(driver, 30).until(ec.presence_of_element_located((By.CLASS_NAME, "market-status-label")))
         if race_status.text == "Intră în desfăşurare":
             race_to_start()
-        # elif race_status.text == 'Închis':
-        #     race_finished()
+        elif race_status.text == 'Închis':
+            pass
         elif race_status.text == "În desfăşurare":
             pass
     race_finished()
