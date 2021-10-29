@@ -80,35 +80,35 @@ for event in events:
 # IDENTIFIED, SO SAY IF THE WINNER IS AT POSITION 5, IT WILL TAKE 20 TO 25 SEC GET
 # THE CORRECT ANSWER
 
-def race_finished():
+# def race_finished():
+#
+#     # Make a list of last 5 links from excel to open them and check the winner
+#     # Load the Excel file and make it active
+#     workbook_name = 'data.xlsx'
+#     wb = load_workbook(workbook_name)
+#     ws = wb.active
 
-    # Make a list of last 5 links from excel to open them and check the winner
-    # Load the Excel file and make it active
-    workbook_name = 'data.xlsx'
-    wb = load_workbook(workbook_name)
-    ws = wb.active
-
-    # Because openpyxl doesn't have a module that let you select last n rows
-    # I have to get the length of the C column for which I subtract the rows
-    # that have to be checked, in this case I got the last 7 rows
-    col_c = ws['c']
-    len_table = int(len(col_c))
-    # print print(len_table - 5)
-    fifth_row = int(len_table - 5)
-
-    # Select the columns and rows to be checked
-    row = ws.iter_rows(min_row=fifth_row, max_row=len_table, min_col=8, max_col=8)
-
-    # Create an empty list to store the links that has to be checked
-    # links_to_check = []
-
-    for link in row:
-        for link_text in link:
-            links_to_check.append(link_text.value)
-
-    print(links_to_check)
-
-    wb.save(filename=workbook_name)
+    # # Because openpyxl doesn't have a module that let you select last n rows
+    # # I have to get the length of the C column for which I subtract the rows
+    # # that have to be checked, in this case I got the last 7 rows
+    # col_c = ws['c']
+    # len_table = int(len(col_c))
+    # # print print(len_table - 5)
+    # fifth_row = int(len_table - 5)
+    #
+    # # Select the columns and rows to be checked
+    # row = ws.iter_rows(min_row=fifth_row, max_row=len_table, min_col=8, max_col=8)
+    #
+    # # Create an empty list to store the links that has to be checked
+    # # links_to_check = []
+    #
+    # for link in row:
+    #     for link_text in link:
+    #         links_to_check.append(link_text.value)
+    #
+    # print(links_to_check)
+    #
+    # wb.save(filename=workbook_name)
 
 
     # jockey_names = WebDriverWait(driver, 30).until(ec.presence_of_all_elements_located((By.CLASS_NAME, "name")))
@@ -216,18 +216,18 @@ def race_finished():
 
 # print(links_to_check)
 
-try:
-    for race_finished in links_to_check:
-        driver.get(links_to_check)
-        race_status_to_check = WebDriverWait(driver, 30).until(ec.presence_of_element_located((By.CLASS_NAME, "market-status-label")))
-        if race_status_to_check.text == "Intră în desfăşurare":
-            pass
-        elif race_status_to_check.text == 'Închis':
-            race_finished()
-        elif race_status_to_check.text == "În desfăşurare":
-            pass
-except:
-    'TimeoutException'
+# try:
+#     for race_finished in links_to_check:
+#         driver.get(links_to_check)
+#         race_status_to_check = WebDriverWait(driver, 30).until(ec.presence_of_element_located((By.CLASS_NAME, "market-status-label")))
+#         if race_status_to_check.text == "Intră în desfăşurare":
+#             pass
+#         elif race_status_to_check.text == 'Închis':
+#             race_finished()
+#         elif race_status_to_check.text == "În desfăşurare":
+#             pass
+# except:
+#     'TimeoutException'
 
 
 # This function takes the races that meet the requirements
@@ -375,7 +375,7 @@ try:
             pass
         elif race_status.text == "În desfăşurare":
             pass
-    race_finished()
+    # race_finished()
 
 except:
     'TimeoutException'

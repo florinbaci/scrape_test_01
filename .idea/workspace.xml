@@ -3757,7 +3757,6 @@
       <change afterPath="$PROJECT_DIR$/../scrape_test/venv/pyvenv.cfg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../scrape_test/venv/test.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../scrape_test/venv/test01.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/User.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../webScrapingLsBet/debug.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../bet_scraping_graphs" beforeDir="false" afterPath="$PROJECT_DIR$/../bet_scraping_graphs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../graphs_bs4" beforeDir="false" afterPath="$PROJECT_DIR$/../graphs_bs4" afterDir="false" />
@@ -3907,7 +3906,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634874060667</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="last_version">
+      <created>1635132254295</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1635132254295</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -3937,10 +3943,10 @@
       <screen x="-1024" y="0" width="1024" height="768" />
     </state>
     <state x="-732" y="88" key="#com.intellij.ide.macro.MacrosDialog/0.0.1366.728/-1024.0.1024.768@-1024.0.1024.768" timestamp="1632021214840" />
-    <state x="-949" y="0" key="CommitChangelistDialog2" timestamp="1634874059101">
+    <state x="-949" y="0" key="CommitChangelistDialog2" timestamp="1635132253180">
       <screen x="-1024" y="0" width="1024" height="768" />
     </state>
-    <state x="-949" y="0" key="CommitChangelistDialog2/0.0.1366.728/-1024.0.1024.768@-1024.0.1024.768" timestamp="1634874059101" />
+    <state x="-949" y="0" key="CommitChangelistDialog2/0.0.1366.728/-1024.0.1024.768@-1024.0.1024.768" timestamp="1635132253180" />
     <state x="-1024" y="74" key="DiffContextDialog" timestamp="1633919619513">
       <screen x="-1024" y="0" width="1024" height="768" />
     </state>
@@ -3958,25 +3964,25 @@
       <screen x="-1024" y="0" width="1024" height="768" />
     </state>
     <state x="-840" y="81" key="Github.UntrackedFilesDialog/0.0.1366.728/-1024.0.1024.768@-1024.0.1024.768" timestamp="1633920246282" />
-    <state width="1002" height="220" key="GridCell.Tab.0.bottom" timestamp="1635131959209">
+    <state width="1002" height="199" key="GridCell.Tab.0.bottom" timestamp="1635478261439">
       <screen x="-1024" y="0" width="1024" height="768" />
     </state>
-    <state width="1002" height="220" key="GridCell.Tab.0.bottom/0.0.1366.728/-1024.0.1024.768@-1024.0.1024.768" timestamp="1635131959209" />
+    <state width="1002" height="199" key="GridCell.Tab.0.bottom/0.0.1366.728/-1024.0.1024.768@-1024.0.1024.768" timestamp="1635478261439" />
     <state width="1344" height="187" key="GridCell.Tab.0.bottom/0.0.1366.728/-1024.0.1024.768@0.0.1366.728" timestamp="1632022419646" />
-    <state width="1002" height="220" key="GridCell.Tab.0.center" timestamp="1635131959208">
+    <state width="1002" height="199" key="GridCell.Tab.0.center" timestamp="1635478261439">
       <screen x="-1024" y="0" width="1024" height="768" />
     </state>
-    <state width="1002" height="220" key="GridCell.Tab.0.center/0.0.1366.728/-1024.0.1024.768@-1024.0.1024.768" timestamp="1635131959208" />
+    <state width="1002" height="199" key="GridCell.Tab.0.center/0.0.1366.728/-1024.0.1024.768@-1024.0.1024.768" timestamp="1635478261439" />
     <state width="1344" height="187" key="GridCell.Tab.0.center/0.0.1366.728/-1024.0.1024.768@0.0.1366.728" timestamp="1632022419646" />
-    <state width="1002" height="220" key="GridCell.Tab.0.left" timestamp="1635131959208">
+    <state width="1002" height="199" key="GridCell.Tab.0.left" timestamp="1635478261439">
       <screen x="-1024" y="0" width="1024" height="768" />
     </state>
-    <state width="1002" height="220" key="GridCell.Tab.0.left/0.0.1366.728/-1024.0.1024.768@-1024.0.1024.768" timestamp="1635131959208" />
+    <state width="1002" height="199" key="GridCell.Tab.0.left/0.0.1366.728/-1024.0.1024.768@-1024.0.1024.768" timestamp="1635478261439" />
     <state width="1344" height="187" key="GridCell.Tab.0.left/0.0.1366.728/-1024.0.1024.768@0.0.1366.728" timestamp="1632022419646" />
-    <state width="1002" height="220" key="GridCell.Tab.0.right" timestamp="1635131959209">
+    <state width="1002" height="199" key="GridCell.Tab.0.right" timestamp="1635478261439">
       <screen x="-1024" y="0" width="1024" height="768" />
     </state>
-    <state width="1002" height="220" key="GridCell.Tab.0.right/0.0.1366.728/-1024.0.1024.768@-1024.0.1024.768" timestamp="1635131959209" />
+    <state width="1002" height="199" key="GridCell.Tab.0.right/0.0.1366.728/-1024.0.1024.768@-1024.0.1024.768" timestamp="1635478261439" />
     <state width="1344" height="187" key="GridCell.Tab.0.right/0.0.1366.728/-1024.0.1024.768@0.0.1366.728" timestamp="1632022419646" />
     <state width="1002" height="233" key="GridCell.Tab.1.bottom" timestamp="1633232279852">
       <screen x="-1024" y="0" width="1024" height="768" />
@@ -3998,10 +4004,10 @@
       <screen x="-1024" y="0" width="1024" height="768" />
     </state>
     <state x="-1011" y="15" key="SettingsEditor/0.0.1366.728/-1024.0.1024.768@-1024.0.1024.768" timestamp="1632278330205" />
-    <state x="-920" y="116" key="Vcs.Push.Dialog.v2" timestamp="1634874069528">
+    <state x="-920" y="116" key="Vcs.Push.Dialog.v2" timestamp="1635132261896">
       <screen x="-1024" y="0" width="1024" height="768" />
     </state>
-    <state x="-920" y="116" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1024.0.1024.768@-1024.0.1024.768" timestamp="1634874069528" />
+    <state x="-920" y="116" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1024.0.1024.768@-1024.0.1024.768" timestamp="1635132261896" />
     <state x="-703" y="297" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1633919568673">
       <screen x="-1024" y="0" width="1024" height="768" />
     </state>
