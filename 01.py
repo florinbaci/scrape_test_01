@@ -10,9 +10,7 @@ from openpyxl import Workbook
 from openpyxl import load_workbook
 from openpyxl.worksheet.table import Table, TableStyleInfo
 
-# import sqlite3
 
-# import csv
 # import pandas as pd
 # from pandas import DataFrame
 

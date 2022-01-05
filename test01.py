@@ -5,60 +5,73 @@ from selenium.webdriver.support import expected_conditions as ec
 import ast
 import openpyxl
 import datetime
+import re
 
 # from openpyxl import Workbook
 # from openpyxl import load_workbook
 # from openpyxl.worksheet.table import Table, TableStyleInfo
 
-# def race_finished():
-# jockey_names = WebDriverWait(driver, 30).until(ec.presence_of_all_elements_located((By.CLASS_NAME, "name")))
-# jockey_names_list = []
-# for jockey in jockey_names:
-#     jokey_01 = jockey.text
-#     jockey_names_list.append(jokey_01)
-#     race_winner = WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.CLASS_NAME, "runner-winner")))
-#     race_win01: str = '//*[@id="main-wrapper"]/div/div[2]/div/ui-view/div/div/div[1]/div[3]/div/div[' \
-#                       '1]/div/bf-main-market/bf-main-marketview/div/div[2]/bf-marketview-runners-list[' \
-#                       '2]/div/div/div/table/tbody/tr['
-#     race_win02: str = ']/td/div[1]/div[2]/div'
-# # print(jockey_names_list)
-# position_final = []
-#
-# for position in range(len(jockey_names)):
-#     race_w = race_win01 + str(position + 1) + race_win02
-#     try:
-#         winner = WebDriverWait(driver, 5).until(ec.presence_of_element_located((By.XPATH, race_w)))
-#         if winner.text == "Câştigător":
-#             position_final.append(position)
-#         break
-#     except:
-#         "TimeoutException"
-#
-# venue_name = WebDriverWait(driver, 30).until(ec.presence_of_element_located((By.CLASS_NAME, "venue-name")))
-# venue_name_final = venue_name.text
-# venue_name_final_race_fin01 = str(venue_name_final.split()[1:-1])
-# venue_name_final_race_fin02 = (' '.join(ast.literal_eval(venue_name_final_race_fin01)))
-#
-# winner_final = jockey_names_list[int(position_final[0])]
-# print(venue_name_final)
-# # print(winner_final)
-#
-# venue_date_race_fin = WebDriverWait(driver, 30).until(ec.presence_of_element_located((By.CLASS_NAME, "event-date")))
-# venue_date_final_race_fin = venue_date_race_fin.text
-# venue_date_final_race_fin01 = venue_date_final_race_fin[3:]
-# # print(venue_date_final_race_fin01)
-#
-# venue_time_race_fin = venue_name_final.split()[0]
-# venue_time_final_race_fin = datetime.datetime.strptime(venue_time_race_fin, '%H:%M').time()
-# # print(venue_time_final_race_fin)
-#
-# race_final_data = [venue_name_final_race_fin02, venue_time_final_race_fin]
-# print(race_final_data)
-# print(winner_final)
-# print("in")
+race_to_check = []
+favorite = []
 
-# driver.quit()
 
+def race_finished():
+    jockey_names = WebDriverWait(driver, 30).until(ec.presence_of_all_elements_located((By.CLASS_NAME, "name")))
+    jockey_names_list = []
+    for jockey in jockey_names:
+        jokey_01 = jockey.text
+        jockey_names_list.append(jokey_01)
+        race_winner = WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.CLASS_NAME, "runner-winner")))
+        race_win01: str = '//*[@id="main-wrapper"]/div/div[2]/div/ui-view/div/div/div[1]/div[3]/div/div[' \
+                          '1]/div/bf-main-market/bf-main-marketview/div/div[2]/bf-marketview-runners-list[' \
+                          '2]/div/div/div/table/tbody/tr['
+        race_win02: str = ']/td/div[1]/div[2]/div'
+    # print(jockey_names_list)
+    position_final = []
+
+    for position in range(len(jockey_names)):
+        race_w = race_win01 + str(position + 1) + race_win02
+        try:
+            winner = WebDriverWait(driver, 5).until(ec.presence_of_element_located((By.XPATH, race_w)))
+            if winner.text == "Câştigător":
+                position_final.append(position)
+            break
+        except:
+            "TimeoutException"
+    # This is what is needed at position 1
+    venue_name = WebDriverWait(driver, 30).until(ec.presence_of_element_located((By.CLASS_NAME, "venue-name")))
+    venue_name_final = venue_name.text
+    venue_name_final_race_fin01 = str(venue_name_final.split()[1:-1])
+    venue_name_final_race_fin02 = (' '.join(ast.literal_eval(venue_name_final_race_fin01)))
+    # print(venue_name_final_race_fin02)
+
+    # This is what is needed at position 2
+    winner_final = jockey_names_list[int(position_final[0])]
+    winner_final_01 = re.sub('\d*\.*\s*', '', winner_final)
+    print(winner_final_01)
+
+    venue_date_race_fin = WebDriverWait(driver, 30).until(ec.presence_of_element_located((By.CLASS_NAME, "event-date")))
+    venue_date_final_race_fin = venue_date_race_fin.text
+    venue_date_final_race_fin01 = venue_date_final_race_fin[3:]
+    # print(venue_date_final_race_fin01)
+
+    # This is what is needed at position 0
+    venue_time_race_fin = venue_name_final.split()[0]
+    venue_time_final_race_fin = datetime.datetime.strptime(venue_time_race_fin, '%H:%M').time()
+    # print(venue_time_final_race_fin)
+
+    race_final_data = [venue_time_final_race_fin, venue_name_final_race_fin02, winner_final]
+    race_to_check.append(race_final_data)
+    # print(race_final_data)
+    # favorite.append(winner_final)
+    # print(winner_final)
+    # print("in")
+
+    # driver.quit()
+
+
+# print(race_to_check)
+# print(favorite)
 
 # ref_workbook = openpyxl.load_workbook('data.xlsx')
 path = 'C:/Users/User/PycharmProjects/scrape_test_01/venv/data.xlsx'
@@ -114,48 +127,47 @@ for event_jokey in row_jockeys:
 for elem in range(len(list_of_dates)):
     group_lists = [list_of_dates[elem], list_of_races[elem], list_of_jockeys[elem]]
     list_of_events.append(group_lists)
-print(list_of_events)
-
+# print(list_of_events)
 
 # This two variables have to be scraped and checked
 # And then append the result to Excel
-race_to_check = [datetime.time(5, 25), 'Wagga', 'Jeddyla\nAdrian Layt']
-favorite = 'Baby'
+# race_to_check = [datetime.time(7, 0), 'Benalla', 'The Nephew\nBilly Egan']
+# favorite = '1. The Nephew\nBilly Egan'
 
-race_in_list = []
-
-for r in list_of_events:
-    if race_to_check in list_of_events:
-        index_found = list_of_events.index(race_to_check)
-        print(index_found)
-        race_in_list.append(race_to_check)
-        break
-# print(race_in_list[0][2])
-
-if favorite in race_in_list[0][2]:
-    # Append 0 to Excel for a lost
-    print("lost")
-else:
-    # Append 1 to Excel for a win
-    print("won")
+# race_in_list = []
+#
+# for r in list_of_events:
+#     if race_to_check in list_of_events:
+#         index_found = list_of_events.index(race_to_check)
+#         print(index_found)
+#         race_in_list.append(race_to_check)
+#         break
+# # print(race_in_list[0][2])
+#
+# if favorite in race_in_list[0][2]:
+#     # Append 0 to Excel for a lost
+#     print("lost")
+# else:
+#     # Append 1 to Excel for a win
+#     print("won")
 
 driver = webdriver.Chrome('C:/Users/User/AppData/Local/Programs/Python/Python38/Scripts/chromedriver.exe')
 driver.maximize_window()
 
-# try:
-#     for race_fin in links_to_check:
-#         driver.get(race_fin)
-#         race_status = WebDriverWait(driver, 30).until(ec.presence_of_element_located((By.CLASS_NAME, "market-status-label")))
-#         if race_status.text == "Intră în desfăşurare":
-#             pass
-#         elif race_status.text == 'Închis':
-#             race_finished()
-#         elif race_status.text == "În desfăşurare":
-#             pass
-#
-#
-# except:
-#     'TimeoutException'
+try:
+    for race_fin in links_to_check:
+        driver.get(race_fin)
+        race_status = WebDriverWait(driver, 30).until(ec.presence_of_element_located((By.CLASS_NAME, "market-status-label")))
+        if race_status.text == "Intră în desfăşurare":
+            pass
+        elif race_status.text == 'Închis':
+            race_finished()
+        elif race_status.text == "În desfăşurare":
+            pass
+
+
+except:
+    'TimeoutException'
 
 driver.quit()
 
