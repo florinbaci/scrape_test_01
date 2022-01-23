@@ -3765,8 +3765,6 @@
       <change beforePath="$PROJECT_DIR$/../graphs_bs4" beforeDir="false" afterPath="$PROJECT_DIR$/../graphs_bs4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../phantomJS" beforeDir="false" afterPath="$PROJECT_DIR$/../phantomJS" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01.py" beforeDir="false" afterPath="$PROJECT_DIR$/01.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test01.py" beforeDir="false" afterPath="$PROJECT_DIR$/test01.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/data.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/venv/data.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -3938,7 +3936,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641358219499</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="last_version">
+      <created>1642878218942</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1642878218942</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
