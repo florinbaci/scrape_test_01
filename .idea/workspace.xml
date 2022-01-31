@@ -3765,6 +3765,7 @@
       <change beforePath="$PROJECT_DIR$/../graphs_bs4" beforeDir="false" afterPath="$PROJECT_DIR$/../graphs_bs4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../phantomJS" beforeDir="false" afterPath="$PROJECT_DIR$/../phantomJS" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test01.py" beforeDir="false" afterPath="$PROJECT_DIR$/test01.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/data.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/venv/data.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -3783,7 +3784,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/test01.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/test01.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/01.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -3943,7 +3944,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642878218942</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="last_version">
+      <created>1642952533770</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1642952533770</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

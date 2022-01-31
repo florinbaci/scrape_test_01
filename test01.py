@@ -14,42 +14,60 @@ import re
 # Setting up the environment and getting the web page raddy to scrap
 driver = webdriver.Chrome('C:/Users/User/AppData/Local/Programs/Python/Python38/Scripts/chromedriver.exe')
 driver.maximize_window()
-url = "https://www.betfair.ro/exchange/plus/horse-racing/market/1.193538178?nodeId=31182619.1751"
+url = "https://www.betfair.ro/exchange/plus/horse-racing/market/1.194006554?nodeId=31203899.0340"
 driver.get(url)
 
 # print(driver.page_source)
 
 jockey_names = WebDriverWait(driver, 30).until(ec.presence_of_all_elements_located((By.CLASS_NAME, "name")))
-print(jockey_names)
+# print(jockey_names)
 
-driver.quit()
+
 # race_to_check = []
 # favorite = []
 
 #
 # def race_finished():
-#     jockey_names = WebDriverWait(driver, 30).until(ec.presence_of_all_elements_located((By.CLASS_NAME, "name")))
-#     jockey_names_list = []
-#     for jockey in jockey_names:
-#         jokey_01 = jockey.text
-#         jockey_names_list.append(jokey_01)
-#         race_winner = WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.CLASS_NAME, "runner-winner")))
-#         race_win01: str = '//*[@id="main-wrapper"]/div/div[2]/div/ui-view/div/div/div[1]/div[3]/div/div[' \
-#                           '1]/div/bf-main-market/bf-main-marketview/div/div[2]/bf-marketview-runners-list[' \
-#                           '2]/div/div/div/table/tbody/tr['
-#         race_win02: str = ']/td/div[1]/div[2]/div'
-#     # print(jockey_names_list)
-#     position_final = []
-#
-#     for position in range(len(jockey_names)):
-#         race_w = race_win01 + str(position + 1) + race_win02
-#         try:
-#             winner = WebDriverWait(driver, 5).until(ec.presence_of_element_located((By.XPATH, race_w)))
-#             if winner.text == "Câştigător":
-#                 position_final.append(position)
-#             break
-#         except:
-#             "TimeoutException"
+jockey_names = WebDriverWait(driver, 30).until(ec.presence_of_all_elements_located((By.CLASS_NAME, "name")))
+jockey_names_list = []
+for jockey in jockey_names:
+    jokey_01 = jockey.text
+    jockey_names_list.append(jokey_01)
+    race_winner = WebDriverWait(driver, 5).until(ec.presence_of_element_located((By.CLASS_NAME, "runner-winner")))
+    race_win01: str = '//*[@id="main-wrapper"]/div/div[2]/div/ui-view/div/div/div[1]/div[3]/div/div[' \
+                      '1]/div/bf-main-market/bf-main-marketview/div/div[2]/bf-marketview-runners-list[' \
+                      '2]/div/div/div/table/tbody/tr['
+    race_win02: str = ']/td/div[1]/div[2]/div'
+
+print(len(jockey_names_list))
+
+position_final = []
+
+for position in range(len(jockey_names)):
+    race_w = race_win01 + str(position + 1) + race_win02
+    try:
+        winner = WebDriverWait(driver, 5).until(ec.presence_of_element_located((By.XPATH, race_w)))
+        if winner.text == "Câştigător":
+            position_final.append(position)
+        break
+    except:
+        "TimeoutException"
+
+my_list = position_final
+remove_content = ["'", "[", "]"]    # Content you want to be removed from `str`
+
+my_str = repr(my_list)  # convert list to `str`
+
+for content in remove_content:
+    my_str = my_str.replace(content, '')
+
+# print(int(my_str))
+
+
+print(jockey_names_list[int(my_str)])
+# print(position_final)
+
+driver.quit()
 #     # This is what is needed at position 1
 #     venue_name = WebDriverWait(driver, 30).until(ec.presence_of_element_located((By.CLASS_NAME, "venue-name")))
 #     venue_name_final = venue_name.text
