@@ -14,7 +14,7 @@ import re
 # Setting up the environment and getting the web page raddy to scrap
 driver = webdriver.Chrome('C:/Users/User/AppData/Local/Programs/Python/Python38/Scripts/chromedriver.exe')
 driver.maximize_window()
-url = "https://www.betfair.ro/exchange/plus/horse-racing/market/1.194006554?nodeId=31203899.0340"
+url = "https://www.betfair.ro/exchange/plus/horse-racing/market/1.194006572?nodeId=31203900.0435"
 driver.get(url)
 
 # print(driver.page_source)
@@ -39,7 +39,9 @@ for jockey in jockey_names:
                       '2]/div/div/div/table/tbody/tr['
     race_win02: str = ']/td/div[1]/div[2]/div'
 
-print(len(jockey_names_list))
+num_of_jokeys_in_race = len(jockey_names)
+print(num_of_jokeys_in_race)
+# print(jockey_names_list)
 
 position_final = []
 
@@ -53,18 +55,25 @@ for position in range(len(jockey_names)):
     except:
         "TimeoutException"
 
-my_list = position_final
-remove_content = ["'", "[", "]"]    # Content you want to be removed from `str`
+# race_winner_final = position_final
+# remove_content = ["'", "[", "]"]  # Content you want to be removed from `str`
+#
+# my_str = repr(race_winner_final)  # convert list to `str`
+#
+# for content in remove_content:
+#     my_str = my_str.replace(content, '')
+#
+# # print(int(my_str))
+#
+# winner_jokey_name = jockey_names_list[int(my_str)]
+# print(winner_jokey_name)
 
-my_str = repr(my_list)  # convert list to `str`
+# This is what is needed at position 2
+winner_final = jockey_names_list[int(position_final[0])]
+winner_final_01 = re.sub('\d*\.*\s', '', winner_final)
+print(winner_final_01)
 
-for content in remove_content:
-    my_str = my_str.replace(content, '')
-
-# print(int(my_str))
-
-
-print(jockey_names_list[int(my_str)])
+# print(type(jockey_names_list[int(my_str)]))
 # print(position_final)
 
 driver.quit()
@@ -73,7 +82,7 @@ driver.quit()
 #     venue_name_final = venue_name.text
 #     venue_name_final_race_fin01 = str(venue_name_final.split()[1:-1])
 #     venue_name_final_race_fin02 = (' '.join(ast.literal_eval(venue_name_final_race_fin01)))
-    # print(venue_name_final_race_fin02)
+# print(venue_name_final_race_fin02)
 #
 #     # This is what is needed at position 2
 #     winner_final = jockey_names_list[int(position_final[0])]
