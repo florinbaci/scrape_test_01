@@ -3760,13 +3760,12 @@
       <change afterPath="$PROJECT_DIR$/../scrape_test/venv/pyvenv.cfg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../scrape_test/venv/test.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../scrape_test/venv/test01.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/df_stuff.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../webScrapingLsBet/debug.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../bet_scraping_graphs" beforeDir="false" afterPath="$PROJECT_DIR$/../bet_scraping_graphs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../graphs_bs4" beforeDir="false" afterPath="$PROJECT_DIR$/../graphs_bs4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../phantomJS" beforeDir="false" afterPath="$PROJECT_DIR$/../phantomJS" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test01.py" beforeDir="false" afterPath="$PROJECT_DIR$/test01.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/df_stuff.py" beforeDir="false" afterPath="$PROJECT_DIR$/df_stuff.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/data.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/venv/data.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -3986,7 +3985,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643604468828</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="last_version">
+      <created>1643868842105</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1643868842105</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

@@ -9,10 +9,10 @@ import re
 driver = webdriver.Chrome('C:/Users/User/AppData/Local/Programs/Python/Python38/Scripts/chromedriver.exe')
 driver.maximize_window()
 
-df = pd.read_excel('data_ex.xlsx')
-df_tail = df.tail(20)
+df = pd.read_excel('data_df.xlsx')
+# df_tail = df.tail(15)
 
-for i, row in df_tail.iterrows():
+for i, row in df.iterrows():
     url = row[7]
     driver.get(url)
 
@@ -35,8 +35,8 @@ for i, row in df_tail.iterrows():
                           '2]/div/div/div/table/tbody/tr['
         race_win02: str = ']/td/div[1]/div[2]/div'
 
-    num_of_jokeys_in_race = len(jockey_names)
-    print(num_of_jokeys_in_race)
+    num_of_jockeys_in_race = len(jockey_names)
+    print(num_of_jockeys_in_race)
 
     # print(len(jockey_names_list))
     # print(jockey_names_list)
@@ -63,8 +63,22 @@ for i, row in df_tail.iterrows():
     print(i, row[6], row[7])
     print('\n')
 
-    if winner_final_03 in row[6]:
+    if winner_final_03[:5] in row[6]:
+        # df.at[i, "Win_Lost"] = 0
+        # df.at[i, "Winner_jockey"] = 'johny'
+        # df.at[i, "No_of_jockeys"] = num_of_jockeys_in_race
+
+        df.loc[i, ["Win_Lost", "No_of_jockeys", "Winner_jockey"]] = [0, num_of_jockeys_in_race, winner_final_03]
         print('is in')
     else:
+        df.loc[i, ["Win_Lost", "No_of_jockeys", "Winner_jockey"]] = [1, num_of_jockeys_in_race, winner_final_03]
+        # df.at[i, "Win_Lost"] = 1
+        # df.at[i, "No_of_jockeys"] = num_of_jockeys_in_race
+        # df.at[i, "Winner_jockey"] = 'boby'
+
         print('not in')
+
+    df.to_excel('data_df01.xlsx')
 # print(df_tail)
+
+driver.quit()
