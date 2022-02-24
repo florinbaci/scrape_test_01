@@ -3760,17 +3760,11 @@
       <change afterPath="$PROJECT_DIR$/../scrape_test/venv/pyvenv.cfg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../scrape_test/venv/test.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../scrape_test/venv/test01.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_df01.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_db.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data_df.xlsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../webScrapingLsBet/debug.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../bet_scraping_graphs" beforeDir="false" afterPath="$PROJECT_DIR$/../bet_scraping_graphs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../graphs_bs4" beforeDir="false" afterPath="$PROJECT_DIR$/../graphs_bs4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../phantomJS" beforeDir="false" afterPath="$PROJECT_DIR$/../phantomJS" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01.py" beforeDir="false" afterPath="$PROJECT_DIR$/01.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_test.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/df_stuff.py" beforeDir="false" afterPath="$PROJECT_DIR$/df_stuff.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/data.xlsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -3789,7 +3783,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/test01.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/df_stuff.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/df_stuff.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/01.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/test_db.py" root0="SKIP_INSPECTION" />
   </component>
@@ -4022,12 +4016,20 @@
       <option name="project" value="LOCAL" />
       <updated>1644129375080</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="has all jockeys odds&#10;24.02.2022">
+      <created>1645676017874</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1645676017874</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="last_version" />
-    <option name="LAST_COMMIT_MESSAGE" value="last_version" />
+    <MESSAGE value="has all jockeys odds&#10;24.02.2022" />
+    <option name="LAST_COMMIT_MESSAGE" value="has all jockeys odds&#10;24.02.2022" />
   </component>
 </project>
