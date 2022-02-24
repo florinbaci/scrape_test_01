@@ -68,10 +68,10 @@ for i, row in df.iterrows():
         # df.at[i, "Winner_jockey"] = 'johny'
         # df.at[i, "No_of_jockeys"] = num_of_jockeys_in_race
 
-        df.loc[i, ["Win_Lost", "No_of_jockeys", "Winner_jockey"]] = [0, num_of_jockeys_in_race, winner_final_03]
+        df.loc[i, ["Win_Lost", "Winner_jockey"]] = [0, winner_final_03]
         print('is in')
     else:
-        df.loc[i, ["Win_Lost", "No_of_jockeys", "Winner_jockey"]] = [1, num_of_jockeys_in_race, winner_final_03]
+        df.loc[i, ["Win_Lost", "Winner_jockey"]] = [1, winner_final_03]
         # df.at[i, "Win_Lost"] = 1
         # df.at[i, "No_of_jockeys"] = num_of_jockeys_in_race
         # df.at[i, "Winner_jockey"] = 'boby'

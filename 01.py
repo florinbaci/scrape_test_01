@@ -303,7 +303,50 @@ while True:
             except:
                 'TimeoutException'
 
-            # print(quotes_final_against)
+            # print(len(quotes_final_against))
+            no_of_jockeys = len(quotes_final_against)
+
+            sorted_quotes = sorted(quotes_final_against)
+            jockeys_odds = {'j1': '', 'j2': '', 'j3': '', 'j4': '', 'j5': '', 'j6': '',
+                            'j7': '', 'j8': '', 'j9': '', 'j10': '', 'j11': '', 'j12': '',
+                            'j13': '', 'j14': '', 'j15': '', 'j16': '', 'j17': '',
+                            'j18': '', 'j19': '', 'j20': '', 'j21': '', 'j22': '',
+                            'j23': '', 'j24': '', 'j25': ''}
+            for index, value in enumerate(sorted_quotes):
+                jockeys_odds.update({'j' + str(index + 1): sorted_quotes[index]})
+
+            j1 = jockeys_odds.get('j1')
+            j2 = jockeys_odds.get('j2')
+            j3 = jockeys_odds.get('j3')
+            j4 = jockeys_odds.get('j4')
+            j5 = jockeys_odds.get('j5')
+            j6 = jockeys_odds.get('j6')
+            j7 = jockeys_odds.get('j7')
+            j8 = jockeys_odds.get('j8')
+            j9 = jockeys_odds.get('j9')
+            j10 = jockeys_odds.get('j10')
+            j11 = jockeys_odds.get('j11')
+            j12 = jockeys_odds.get('j12')
+            j13 = jockeys_odds.get('j13')
+            j14 = jockeys_odds.get('j14')
+            j15 = jockeys_odds.get('j15')
+            j16 = jockeys_odds.get('j16')
+            j17 = jockeys_odds.get('j17')
+            j18 = jockeys_odds.get('j18')
+            j19 = jockeys_odds.get('j19')
+            j20 = jockeys_odds.get('j20')
+            j21 = jockeys_odds.get('j21')
+            j22 = jockeys_odds.get('j22')
+            j23 = jockeys_odds.get('j23')
+            j24 = jockeys_odds.get('j24')
+            j25 = jockeys_odds.get('j25')
+
+            # j1 = sorted_quotes[0]
+            # j2 = sorted_quotes[1]
+            # j3 = sorted_quotes[2]
+            # j4 = sorted_quotes[3]
+            # print(sorted_quotes)
+
             favorite_index = min(quotes_final_against)
             # print(favorite_index)
 
@@ -312,7 +355,9 @@ while True:
 
             # Calling the Test function to write the event in Excel
             test(venue_date_final01, venue_time_final, venue_name_final02, venue_country,
-                 venue_total_sum, favorite_index, favorite_jokey_name, race_to_check)
+                 venue_total_sum, favorite_index, favorite_jokey_name, race_to_check,
+                 no_of_jockeys, j1, j2, j3, j4, j5, j6, j7, j8, j9, j10, j11, j12, j13,
+                 j14, j15, j16, j17, j18, j19, j20, j21, j22, j23, j24, j25)
 
         else:
             pass
@@ -320,11 +365,16 @@ while True:
 
     # The function that verifies if the race is writen in Excel, if it isn't it writes it in
     # Also here Should be the Betting button
+
+
     def test(venue_date_final01, venue_time_final, venue_name_final02, venue_country,
-             venue_total_sum, favorite_index, favorite_jokey_name, race_to_check):
+             venue_total_sum, favorite_index, favorite_jokey_name, race_to_check,
+             no_of_jockeys, j1, j2, j3, j4, j5, j6, j7, j8, j9, j10, j11, j12, j13,
+             j14, j15, j16, j17, j18, j19, j20, j21, j22, j23, j24, j25):
 
         # print(venue_date_final01, venue_time_final, venue_name_final02, venue_country,
-        #       venue_total_sum, favorite_index, favorite_jokey_name)
+        #       venue_total_sum, favorite_index, favorite_jokey_name, no_of_jockeys,
+        #       sorted_quotes)
 
         # Load the Excel file and make it active
         workbook_name = 'data.xlsx'
@@ -339,9 +389,11 @@ while True:
         # print print(len_table - 5)
         fifth_row = int(len_table - 7)
 
-        # I bring the values form the race_to_start function in a list so we can write them in Excel
+        # I bring the values form the race_to_start function in a list, so we can write them in Excel
         race_final_data = [venue_date_final01, venue_time_final, venue_name_final02, venue_country,
-                           venue_total_sum, favorite_index, favorite_jokey_name, race_to_check]
+                           venue_total_sum, favorite_index, favorite_jokey_name, race_to_check,
+                           no_of_jockeys, j1, j2, j3, j4, j5, j6, j7, j8, j9, j10, j11, j12, j13,
+                           j14, j15, j16, j17, j18, j19, j20, j21, j22, j23, j24, j25]
 
         # Select the columns and rows to be checked
         row = ws.iter_rows(min_row=fifth_row, max_row=len_table, min_col=2, max_col=3)
@@ -353,9 +405,15 @@ while True:
             excel_last_rows.append([a.value, b.value])
 
         # The button that will place the bet will be in this condition as well
+        # Instead of vtf and vnf should be replaced with the link
         if [venue_time_final, venue_name_final02] not in excel_last_rows:
             # print(venue_time_final, venue_name_final02)
             ws.append(race_final_data)
+            # ws.append(sorted_quotes)
+            print(venue_date_final01, venue_time_final, venue_name_final02, venue_country,
+                  venue_total_sum, favorite_index, favorite_jokey_name, no_of_jockeys,
+                  j1, j2, j3, j4,  j5, j6, j7, j8, j9, j10, j11, j12, j13,
+                  j14, j15, j16, j17, j18, j19, j20, j21, j22, j23, j24, j25)
 
         wb.save(filename=workbook_name)
 
