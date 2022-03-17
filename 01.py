@@ -9,12 +9,14 @@ import openpyxl
 from openpyxl import Workbook
 from openpyxl import load_workbook
 from openpyxl.worksheet.table import Table, TableStyleInfo
-
+from webdriver_manager.chrome import ChromeDriverManager
 # import pandas as pd
 # from pandas import DataFrame
 
 # Setting up the environment and getting the web page raddy to scrap
-driver = webdriver.Chrome('C:/Users/User/AppData/Local/Programs/Python/Python38/Scripts/chromedriver.exe')
+# driver = webdriver.Chrome('C:/Users/User/AppData/Local/Programs/Python/Python38/Scripts/chromedriver.exe')
+# driver = webdriver.Chrome('C:/Users/User/PycharmProjects/scrape_test_01/venv/Scripts/chromedriver.exe')
+driver = webdriver.Chrome(ChromeDriverManager().install())
 driver.maximize_window()
 url = "https://www.betfair.ro/exchange/plus/ro/curse-de-cai-pariuri-7/next"
 driver.get(url)
@@ -306,6 +308,8 @@ while True:
             # print(len(quotes_final_against))
             no_of_jockeys = len(quotes_final_against)
 
+            # Sort the list with odds, break the list into pieces, and make a dictionary
+            # so that can be saved each odd in a separate cell
             sorted_quotes = sorted(quotes_final_against)
             jockeys_odds = {'j1': '', 'j2': '', 'j3': '', 'j4': '', 'j5': '', 'j6': '',
                             'j7': '', 'j8': '', 'j9': '', 'j10': '', 'j11': '', 'j12': '',
@@ -340,12 +344,6 @@ while True:
             j23 = jockeys_odds.get('j23')
             j24 = jockeys_odds.get('j24')
             j25 = jockeys_odds.get('j25')
-
-            # j1 = sorted_quotes[0]
-            # j2 = sorted_quotes[1]
-            # j3 = sorted_quotes[2]
-            # j4 = sorted_quotes[3]
-            # print(sorted_quotes)
 
             favorite_index = min(quotes_final_against)
             # print(favorite_index)
@@ -428,6 +426,8 @@ while True:
                 pass
             elif race_status.text == "În desfăşurare":
                 pass
+            # elif race_status.text is None:
+            #     pass
         # race_finished()
 
     except:

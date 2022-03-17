@@ -3760,11 +3760,14 @@
       <change afterPath="$PROJECT_DIR$/../scrape_test/venv/pyvenv.cfg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../scrape_test/venv/test.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../scrape_test/venv/test01.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_df.xlsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../webScrapingLsBet/debug.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../bet_scraping_graphs" beforeDir="false" afterPath="$PROJECT_DIR$/../bet_scraping_graphs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../graphs_bs4" beforeDir="false" afterPath="$PROJECT_DIR$/../graphs_bs4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../phantomJS" beforeDir="false" afterPath="$PROJECT_DIR$/../phantomJS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01.py" beforeDir="false" afterPath="$PROJECT_DIR$/01.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_df.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data_df.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_df01.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data_df01.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -3807,7 +3810,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/test_db.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.stuff">
+  <component name="RunManager" selected="Python.01">
     <configuration name="01" type="PythonConfigurationType" factoryName="Python">
       <module name="scrape_test_01" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -3895,8 +3898,8 @@
     <list>
       <item itemvalue="Python.01" />
       <item itemvalue="Python.stuff" />
-      <item itemvalue="Python.test_db" />
       <item itemvalue="Python.test01" />
+      <item itemvalue="Python.test_db" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
@@ -4023,13 +4026,21 @@
       <option name="project" value="LOCAL" />
       <updated>1645676017874</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="24.02.2022">
+      <created>1645676234167</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1645676234167</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="last_version" />
     <MESSAGE value="has all jockeys odds&#10;24.02.2022" />
-    <option name="LAST_COMMIT_MESSAGE" value="has all jockeys odds&#10;24.02.2022" />
+    <MESSAGE value="24.02.2022" />
+    <option name="LAST_COMMIT_MESSAGE" value="24.02.2022" />
   </component>
 </project>
