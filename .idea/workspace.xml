@@ -3766,8 +3766,6 @@
       <change beforePath="$PROJECT_DIR$/../phantomJS" beforeDir="false" afterPath="$PROJECT_DIR$/../phantomJS" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/01.py" beforeDir="false" afterPath="$PROJECT_DIR$/01.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_df.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data_df.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_df01.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data_df01.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -3898,8 +3896,8 @@
     <list>
       <item itemvalue="Python.01" />
       <item itemvalue="Python.stuff" />
-      <item itemvalue="Python.test01" />
       <item itemvalue="Python.test_db" />
+      <item itemvalue="Python.test01" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
@@ -4033,14 +4031,21 @@
       <option name="project" value="LOCAL" />
       <updated>1645676234167</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="last_version">
+      <created>1647494732523</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1647494732523</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="last_version" />
     <MESSAGE value="has all jockeys odds&#10;24.02.2022" />
     <MESSAGE value="24.02.2022" />
-    <option name="LAST_COMMIT_MESSAGE" value="24.02.2022" />
+    <MESSAGE value="last_version" />
+    <option name="LAST_COMMIT_MESSAGE" value="last_version" />
   </component>
 </project>

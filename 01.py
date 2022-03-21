@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as ec
 import re
 import ast
 import datetime
+# from datetime import *
 import openpyxl
 from openpyxl import Workbook
 from openpyxl import load_workbook
@@ -234,8 +235,8 @@ while True:
     # FOR NOW THIS COME SECOND ORDER OF IMPORTANCE DUE TO THE FACT THE WE WANT TO TEST
     # THE HYPOTHESIS FIRST
 
-    def race_to_start():
 
+    def race_to_start():
         jockey_names = WebDriverWait(driver, 30).until(ec.presence_of_all_elements_located((By.CLASS_NAME, "name")))
         jockey_names_list = []
         for jockey in jockey_names:
@@ -246,16 +247,34 @@ while True:
         event_money = combined.text
         event_money_int = int(event_money.split()[1].replace(',', ''))
 
-        if event_money_int > 5000:
+        venue_date = WebDriverWait(driver, 30).until(ec.presence_of_element_located((By.CLASS_NAME, "event-date")))
+        venue_date_final = venue_date.text
+        venue_date_final01 = venue_date_final[3:]
+
+        pattern = re.compile(r'\s*\w*')
+        result = pattern.findall(venue_date_final01)
+        current_day_scraped = int(result[0])
+        # print(type(current_day_scraped))
+
+        current_day = datetime.datetime.today()
+        current_day01 = int(current_day.day)
+        # print(type(current_day01))
+
+        # if current_day_scraped == current_day01:
+        #     print('yes')
+        # else:
+        #     print('no')
+
+        if event_money_int > 5000 and current_day_scraped == current_day01:
 
             race_to_check = race
 
             venue_name = WebDriverWait(driver, 30).until(ec.presence_of_element_located((By.CLASS_NAME, "venue-name")))
             venue_name_final = venue_name.text
 
-            venue_date = WebDriverWait(driver, 30).until(ec.presence_of_element_located((By.CLASS_NAME, "event-date")))
-            venue_date_final = venue_date.text
-            venue_date_final01 = venue_date_final[3:]
+            # venue_date = WebDriverWait(driver, 30).until(ec.presence_of_element_located((By.CLASS_NAME, "event-date")))
+            # venue_date_final = venue_date.text
+            # venue_date_final01 = venue_date_final[3:]
             # print(venue_date_final01)
 
             venue_time = venue_name_final.split()[0]
@@ -308,8 +327,6 @@ while True:
             # print(len(quotes_final_against))
             no_of_jockeys = len(quotes_final_against)
 
-            # Sort the list with odds, break the list into pieces, and make a dictionary
-            # so that can be saved each odd in a separate cell
             sorted_quotes = sorted(quotes_final_against)
             jockeys_odds = {'j1': '', 'j2': '', 'j3': '', 'j4': '', 'j5': '', 'j6': '',
                             'j7': '', 'j8': '', 'j9': '', 'j10': '', 'j11': '', 'j12': '',
@@ -344,6 +361,12 @@ while True:
             j23 = jockeys_odds.get('j23')
             j24 = jockeys_odds.get('j24')
             j25 = jockeys_odds.get('j25')
+
+            # j1 = sorted_quotes[0]
+            # j2 = sorted_quotes[1]
+            # j3 = sorted_quotes[2]
+            # j4 = sorted_quotes[3]
+            # print(sorted_quotes)
 
             favorite_index = min(quotes_final_against)
             # print(favorite_index)
@@ -394,17 +417,17 @@ while True:
                            j14, j15, j16, j17, j18, j19, j20, j21, j22, j23, j24, j25]
 
         # Select the columns and rows to be checked
-        row = ws.iter_rows(min_row=fifth_row, max_row=len_table, min_col=2, max_col=3)
+        row = ws.iter_rows(min_row=fifth_row, max_row=len_table, min_col=8, max_col=9)
 
         # Create an empty list of the last rows from Excel to be able to compare the item
         excel_last_rows = []
 
-        for a, b in row:
-            excel_last_rows.append([a.value, b.value])
+        for r_link, no_of_jock in row:
+            excel_last_rows.append(r_link.value)
 
         # The button that will place the bet will be in this condition as well
         # Instead of vtf and vnf should be replaced with the link
-        if [venue_time_final, venue_name_final02] not in excel_last_rows:
+        if race_to_check not in excel_last_rows:
             # print(venue_time_final, venue_name_final02)
             ws.append(race_final_data)
             # ws.append(sorted_quotes)
@@ -426,8 +449,6 @@ while True:
                 pass
             elif race_status.text == "În desfăşurare":
                 pass
-            # elif race_status.text is None:
-            #     pass
         # race_finished()
 
     except:
